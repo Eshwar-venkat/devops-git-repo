@@ -1,23 +1,39 @@
-name: NPM Workflow
+name: npm workflow
 
 on:
-  workflow_dispatch:   # Manual trigger from GitHub UI
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 18
 
+      # Build the tarball from source
+      - name: Pack local library
+        run: |
+          cd my-npm-lib
+          npm install
+          npm pack
+          mv *.tgz ../local-npm/
+
+      # Install the freshly built artifact in your app
       - name: Install local package
-        run: npm install ../local-npm/my-npm-lib-1.0.0.tgz
+        run: |
+          cd my-npm-app
+          npm install ../local-npm/my-npm-lib-*.tgz
+          npm install
 
-      - name: Run test script
-        run: node test.js
+      - name: Run tests
+        run: |
+          cd my-npm-app
+          npm test
