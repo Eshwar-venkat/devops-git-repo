@@ -50,7 +50,7 @@ jobs:
             # Verify Docker
             docker --version
 
-            # Deploy container
+            # Deploy container new
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:latest
             sudo docker stop myapp || true
             sudo docker rm myapp || true
