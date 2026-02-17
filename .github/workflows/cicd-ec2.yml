@@ -43,15 +43,15 @@ jobs:
             then
               sudo yum update -y
               sudo yum install -y docker
-              sudo service docker start
-              sudo usermod -a -G docker ec2-user
+              sudo systemctl start docker
+              sudo systemctl enable docker
             fi
 
             # Verify Docker
             docker --version
 
             # Deploy container
-            docker pull your-dockerhub-user/myapp:latest
-            docker stop myapp || true
-            docker rm myapp || true
-            docker run -d -p 80:5000 --name myapp your-dockerhub-user/myapp:latest
+            sudo docker pull your-dockerhub-user/myapp:latest
+            sudo docker stop myapp || true
+            sudo docker rm myapp || true
+            sudo docker run -d -p 80:5000 --name myapp your-dockerhub-user/myapp:latest
