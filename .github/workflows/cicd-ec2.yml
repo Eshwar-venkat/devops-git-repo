@@ -34,11 +34,24 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.EC2_IP }}
+          host: ${{ secrets.EC2_HOST }}
           username: ec2-user
-          key: ${{ secrets.EC2_KEY }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+            # Install Docker if not present
+            if ! command -v docker &> /dev/null
+            then
+              sudo yum update -y
+              sudo yum install -y docker
+              sudo service docker start
+              sudo usermod -a -G docker ec2-user
+            fi
+
+            # Verify Docker
+            docker --version
+
+            # Deploy container
+            docker pull your-dockerhub-user/myapp:latest
             docker stop myapp || true
             docker rm myapp || true
-            docker run -d -p 80:5000 --name myapp ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+            docker run -d -p 80:5000 --name myapp your-dockerhub-user/myapp:latest
