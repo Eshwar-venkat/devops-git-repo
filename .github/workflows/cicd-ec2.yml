@@ -51,7 +51,7 @@ jobs:
             docker --version
 
             # Deploy container
-            sudo docker pull your-dockerhub-user/myapp:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:latest
             sudo docker stop myapp || true
             sudo docker rm myapp || true
-            sudo docker run -d -p 80:5000 --name myapp your-dockerhub-user/myapp:latest
+            sudo docker run -d -p 80:5000 --name myapp ${{ secrets.DOCKER_USERNAME }}/myapp:latest
