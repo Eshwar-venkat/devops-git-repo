@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Venkat's Site</title>
+</head>
+<body>
+  <h1>Hello, I'm Venkat</h1>
+  <p>DevOps Engineer</p>
+    <p>Specializing in CI/CD, AWS automation, Docker and Terraform</p>
+  <p>Location: Chennai, India</p>
+  <p>Backend says: <span id="backend"></span></p>
+
+  <script>
+    fetch("/api/info")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("backend").innerText = data.message;
+      })
+      .catch(err => {
+        document.getElementById("backend").innerText = "Backend not reachable";
+      });
+  </script>
+</body>
+</html>
