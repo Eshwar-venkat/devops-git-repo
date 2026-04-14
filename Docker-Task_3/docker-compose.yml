@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: eshwarvenkat/custom-nginx:v1.0
+    container_name: nginx-web
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx_data:/var/opt/nginx
+    restart: always

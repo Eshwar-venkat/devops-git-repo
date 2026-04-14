@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Venkat's Custom Nginx</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e4ec);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Venkat's Custom Nginx Site</h1>
+    <p>Powered by Docker & Nginx</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>About Me</h2>
+      <p>Hello, I’m Venkat — a DevOps Engineer at Tata Consultancy Services. I specialize in CI/CD pipelines, AWS automation with Terraform, and Docker containerization. I enjoy workflow optimization and making technical concepts accessible.</p>
+    </div>
+
+    <div class="card">
+      <h2>Site Details</h2>
+      <p>This site is served using a <strong>custom Nginx Docker image</strong> and deployed with Docker Compose. A bind mount is configured at <code>/var/opt/nginx</code> for persistent data.</p>
+    </div>
+
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Location: Chennai, Tamil Nadu, India</p>
+      <p>Profession: DevOps Engineer</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Venkat | Custom Nginx Demo</p>
+  </footer>
+</body>
+</html>
