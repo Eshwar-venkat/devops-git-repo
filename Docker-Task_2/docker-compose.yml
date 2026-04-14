@@ -1,0 +1,13 @@
+version: '3'
+services:
+  apache:
+    build: ./httpd
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
