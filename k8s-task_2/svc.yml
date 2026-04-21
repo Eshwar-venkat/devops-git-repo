@@ -1,19 +1,11 @@
 apiVersion: v1
-
 kind: Service
-
 metadata:
-  name: myapp-service
-  namespace: myapp
-  labels:
-    project: calculator-app
-
+  name: nginx-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
-    app: calculator
+    app: nginx
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 5000
-      nodePort: 30080 
+  - port: 80
+    targetPort: 80
