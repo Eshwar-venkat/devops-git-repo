@@ -1,0 +1,17 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: mycals-pod
+  namespace: myapp
+  labels:
+    app: calculator
+    envi: dev
+
+spec:
+  containers:
+    - name: cals-app
+      image: eshwarvenkat/calculator-app:v1
+      ports:
+        - containerPort: 5000
