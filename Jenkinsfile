@@ -43,7 +43,7 @@ pipeline {
                 subject: "Pipeline SUCCESS: Calculator App",
                 body: """Hello Team,<br><br>
                         Jenkins pipeline completed successfully.<br>
-                        The Calculator App is available at: http://http://13.203.103.240:8081<br><br>
+                        The Calculator App is available at: http://13.203.103.240:8081<br><br>
                         Regards,<br>Jenkins""",
                 to: "riovenkatrio@gmail.com"
             )
