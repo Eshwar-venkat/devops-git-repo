@@ -1,0 +1,198 @@
+Started by GitHub push by Eshwar-venkat
+Obtained Jenkinsfile from git https://github.com/Eshwar-venkat/devops-git-repo.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/calculator-app
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential Git_credits
+Cloning the remote Git repository
+Cloning repository https://github.com/Eshwar-venkat/devops-git-repo.git
+ > git init /var/lib/jenkins/workspace/calculator-app # timeout=10
+Fetching upstream changes from https://github.com/Eshwar-venkat/devops-git-repo.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/Eshwar-venkat/devops-git-repo.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/Eshwar-venkat/devops-git-repo.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision ac8380acd979eba1fe4ebf8632bb1202afbe2fbf (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ac8380acd979eba1fe4ebf8632bb1202afbe2fbf # timeout=10
+Commit message: "Merge branch 'main' of https://github.com/Eshwar-venkat/devops-git-repo"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/calculator-app/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Eshwar-venkat/devops-git-repo.git # timeout=10
+Fetching upstream changes from https://github.com/Eshwar-venkat/devops-git-repo.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/Eshwar-venkat/devops-git-repo.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision ac8380acd979eba1fe4ebf8632bb1202afbe2fbf (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ac8380acd979eba1fe4ebf8632bb1202afbe2fbf # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main ac8380acd979eba1fe4ebf8632bb1202afbe2fbf # timeout=10
+Commit message: "Merge branch 'main' of https://github.com/Eshwar-venkat/devops-git-repo"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ docker build -t eshwarvenkat/calculator-app:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 203B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20
+#2 DONE 2.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 3.49kB done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/node:20@sha256:8f693eaa7e0a8e71560c9a82b55fd54c2ae920a2ba5d2cde28bac7d1c01c9ba5
+#5 resolve docker.io/library/node:20@sha256:8f693eaa7e0a8e71560c9a82b55fd54c2ae920a2ba5d2cde28bac7d1c01c9ba5 0.0s done
+#5 sha256:33ed5ef90e835c40007b658b2d7cb1354b282bffcb53feceb305e9feff1d98e1 6.75kB / 6.75kB done
+#5 sha256:8f693eaa7e0a8e71560c9a82b55fd54c2ae920a2ba5d2cde28bac7d1c01c9ba5 6.41kB / 6.41kB done
+#5 sha256:cacf10e99285cbbc891452e31249c1b5ec3ba225f40028fae946b75aeaf1b66a 2.49kB / 2.49kB done
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 0B / 48.49MB 0.1s
+#5 sha256:e5203b2bfeff92b72e816dc6cbb1f16856f0cd592e521e3c0cfa195a78fe180e 0B / 24.04MB 0.1s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 0B / 64.40MB 0.1s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 10.49MB / 64.40MB 0.6s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 23.47MB / 64.40MB 0.7s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 5.24MB / 48.49MB 0.9s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 33.55MB / 64.40MB 0.9s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 9.44MB / 48.49MB 1.0s
+#5 sha256:e5203b2bfeff92b72e816dc6cbb1f16856f0cd592e521e3c0cfa195a78fe180e 2.10MB / 24.04MB 1.0s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 37.75MB / 64.40MB 1.0s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 16.78MB / 48.49MB 1.2s
+#5 sha256:e5203b2bfeff92b72e816dc6cbb1f16856f0cd592e521e3c0cfa195a78fe180e 13.63MB / 24.04MB 1.2s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 47.19MB / 64.40MB 1.2s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 26.21MB / 48.49MB 1.4s
+#5 sha256:e5203b2bfeff92b72e816dc6cbb1f16856f0cd592e521e3c0cfa195a78fe180e 24.04MB / 24.04MB 1.4s done
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 54.53MB / 64.40MB 1.4s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 0B / 211.55MB 1.4s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 34.60MB / 48.49MB 1.6s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 62.91MB / 64.40MB 1.6s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 42.99MB / 48.49MB 1.8s
+#5 sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 64.40MB / 64.40MB 1.6s done
+#5 sha256:c83419f4430962505175b565eb8a24aafeaa4d441c0b22234e94c6e8160848ba 0B / 3.32kB 1.8s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 48.23MB / 48.49MB 1.9s
+#5 sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 48.49MB / 48.49MB 1.9s done
+#5 sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 0B / 48.62MB 2.0s
+#5 extracting sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 11.53MB / 211.55MB 2.1s
+#5 sha256:c83419f4430962505175b565eb8a24aafeaa4d441c0b22234e94c6e8160848ba 3.32kB / 3.32kB 2.1s done
+#5 sha256:2f2ab6e4eb4619f7b8506c38dc79c8adf77acffb7622bc15ceeabb0fbc73b8a1 0B / 1.25MB 2.2s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 29.36MB / 211.55MB 2.3s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 46.14MB / 211.55MB 2.5s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 58.72MB / 211.55MB 2.6s
+#5 sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 10.49MB / 48.62MB 2.6s
+#5 sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 19.92MB / 48.62MB 2.7s
+#5 sha256:2f2ab6e4eb4619f7b8506c38dc79c8adf77acffb7622bc15ceeabb0fbc73b8a1 385.02kB / 1.25MB 2.7s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 77.59MB / 211.55MB 2.8s
+#5 sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 26.21MB / 48.62MB 2.8s
+#5 sha256:2f2ab6e4eb4619f7b8506c38dc79c8adf77acffb7622bc15ceeabb0fbc73b8a1 1.25MB / 1.25MB 2.7s done
+#5 sha256:0b22ec2d9b1a1a0e906e301b5ef08efe7774d5fc001b9cfa08e4e980152a0357 0B / 448B 2.8s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 94.45MB / 211.55MB 3.0s
+#5 sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 45.09MB / 48.62MB 3.0s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 110.10MB / 211.55MB 3.2s
+#5 sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 48.62MB / 48.62MB 3.1s done
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 129.52MB / 211.55MB 3.4s
+#5 sha256:0b22ec2d9b1a1a0e906e301b5ef08efe7774d5fc001b9cfa08e4e980152a0357 448B / 448B 3.3s done
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 146.80MB / 211.55MB 3.6s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 168.82MB / 211.55MB 3.8s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 187.70MB / 211.55MB 4.0s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 202.38MB / 211.55MB 4.2s
+#5 sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 211.55MB / 211.55MB 4.4s done
+#5 extracting sha256:db53381ee51f9e43304e236099ba097ae1b33ae41a8007e0b6319992eb55fd00 3.6s done
+#5 extracting sha256:e5203b2bfeff92b72e816dc6cbb1f16856f0cd592e521e3c0cfa195a78fe180e
+#5 extracting sha256:e5203b2bfeff92b72e816dc6cbb1f16856f0cd592e521e3c0cfa195a78fe180e 0.8s done
+#5 extracting sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa
+#5 extracting sha256:8fcda2b4d7993820b00c5488d173051e76d01ba6b85620617ba77001b0f9e2fa 3.2s done
+#5 extracting sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9
+#5 extracting sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 5.1s
+#5 extracting sha256:2933ecab0f11302fd71f29aa83ad2904683246f7a8320ad0dc3a60b23f05fee9 9.0s done
+#5 extracting sha256:c83419f4430962505175b565eb8a24aafeaa4d441c0b22234e94c6e8160848ba
+#5 extracting sha256:c83419f4430962505175b565eb8a24aafeaa4d441c0b22234e94c6e8160848ba done
+#5 extracting sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 0.1s
+#5 extracting sha256:76e6b8204a89d20e7915fdc9a98ff33cb65fd7ce44ecf5a84b6cfca4bdb3d6d0 2.8s done
+#5 extracting sha256:2f2ab6e4eb4619f7b8506c38dc79c8adf77acffb7622bc15ceeabb0fbc73b8a1
+#5 extracting sha256:2f2ab6e4eb4619f7b8506c38dc79c8adf77acffb7622bc15ceeabb0fbc73b8a1 0.1s done
+#5 extracting sha256:0b22ec2d9b1a1a0e906e301b5ef08efe7774d5fc001b9cfa08e4e980152a0357 done
+#5 DONE 22.4s
+
+#6 [2/4] WORKDIR /calculator
+#6 DONE 0.3s
+
+#7 [3/4] COPY calculator.html .
+#7 DONE 0.1s
+
+#8 [4/4] COPY server.js .
+#8 DONE 0.0s
+
+#9 exporting to image
+#9 exporting layers 0.1s done
+#9 writing image sha256:7aa36c1afef382548aef5b9909d4b40783ebd963a922e07bf2c346af878f376d 0.0s done
+#9 naming to docker.io/eshwarvenkat/calculator-app:latest done
+#9 DONE 0.1s
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy Container)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ docker ps -q --filter name=calculator-app
++ grep -q .
++ true
++ docker run -d --name calculator-app -p 8081:5000 eshwarvenkat/calculator-app:latest
+7c16ec6f3ce3ef709d1fa85a1395b61ebe24213b1977fd69b1a95f95fc86f686
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] emailext
+Sending email to: riovenkatrio@gmail.com
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
