@@ -5,6 +5,7 @@ phases:
     commands:
       - echo Logging in to Docker Hub...
       - echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+      - aws eks update-kubeconfig --region ap-south-1 --name my-eks-cluster
       - echo Pre-build completed
 
   build:
