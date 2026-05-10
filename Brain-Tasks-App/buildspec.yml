@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+      - echo Pre-build completed
+
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t project1-braintask:latest .
+      - docker tag project1-braintask:latest $DOCKER_HUB_USERNAME/project1-braintask:latest
+
+  post_build:
+    commands:
+      - echo Pushing the image to Docker Hub...
+      - docker push $DOCKER_HUB_USERNAME/project1-braintask:latest
+      - echo Deploying to EKS cluster...
+      - kubectl apply -f deployment.yml
+      - kubectl apply -f svc.yml
+      - echo Build and deploy completed successfully
+
