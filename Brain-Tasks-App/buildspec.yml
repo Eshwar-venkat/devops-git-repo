@@ -18,6 +18,7 @@ phases:
     commands:
       - echo Deploying to EKS cluster...
       - kubectl apply -f Brain-Tasks-App/deployment.yml
+      - kubectl rollout restart deployment nginx-deploy
       - kubectl apply -f Brain-Tasks-App/svc.yml
       - echo Build and deploy completed successfully
 
