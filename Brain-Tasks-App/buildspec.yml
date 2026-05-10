@@ -18,7 +18,6 @@ phases:
       - echo Pushing the image to Docker Hub...
       - docker push $DOCKER_HUB_USERNAME/project1-braintask:latest
       - echo Deploying to EKS cluster...
-      - kubectl apply -f deployment.yml
-      - kubectl apply -f svc.yml
+      - kubectl apply -f Brain-Tasks-App/deployment.yml
+      - kubectl apply -f Brain-Tasks-App/svc.yml
       - echo Build and deploy completed successfully
-
